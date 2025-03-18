@@ -1,0 +1,30 @@
+{
+  "name": "cr_unblocker",
+  "version": "3.0.2",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "clean": "echo '=> CLEANING' && rm -rf public && mkdir public",
+    "test": "echo '=> TESTS' && npm run -s lint",
+    "prebuild": "npm run -s test && npm run -s clean",
+    "lint": "npm run -s lint:js && npm run -s lint:css",
+    "lint:js": "echo '-> linting js' && eslint src/*.js",
+    "lint:css": "echo '-> linting css' && stylelint src/*.css",
+    "build": "echo '=> BUILD' && npm run -s build:zip",
+    "build:zip": "echo '-> building for chrome and firefox stores' && cd src; zip -0r ../public/extension.zip ./*; cd ..",
+    "watch": "watch 'npm run -s build' src/"
+  },
+  "author": "Finn",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.16.0",
+    "stylelint": "^14.8.5",
+    "stylelint-config-standard": "^25.0.0"
+  },
+  "stylelint": {
+    "extends": "./test/.stylelintrc.json"
+  },
+  "eslintConfig": {
+    "extends": "./test/.eslintrc.json"
+  }
+}

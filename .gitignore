@@ -1,0 +1,8 @@
+/node_modules
+/public
+src.zip
+extension.zip
+extension.crx
+extension.pem
+.vscode
+*.log
